@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\djalma\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="C:\Users\djalma\AndroidStudioProjects\HttpConcorrenciaFileMidea\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-8253030618f8e1c5b09ecf374a5a3b778803f73e.jar" />
+    </item>
+    <item
+        jar="C:\Users\djalma\AndroidStudioProjects\HttpConcorrenciaFileMidea\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="C:\Users\djalma\AndroidStudioProjects\HttpConcorrenciaFileMidea\app\build\intermediates\pre-dexed\debug\classes-721e8462359a28be65ac14fd873aa9dad5023534.jar" />
+    </item>
+
+</items>

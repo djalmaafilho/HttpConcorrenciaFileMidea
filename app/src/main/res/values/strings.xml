@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HttpConcorrenciaFileMidea</string>
+    <string name="hello_world">Olá Mundo!</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_abrir_foto">Fotos</string>
+    <string name="carregando">Carregando...</string>
+
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.httpconcorrenciafilemidea"
+    android:versionCode="1"
+    android:versionName="1.0"
+    >
+
+	<uses-feature android:name="android.hardware.camera" />
+	<uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+    <application
+        android:name="com.example.httpconcorrenciafilemidea.BaseAplicacao"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".BuscaArquivoActivity" android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GaleriaActivity" android:label="@string/app_name" >
+        </activity>
+      
+   		<receiver android:name=".MeuReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <!-- 
+        	Servico roda indefinidamente atraves da chamada ao metodo start service 
+        	ver a classe BaseAplicacao.
+       	-->
+  		<service android:name=".SincronizacaoService" android:exported="false" >
+            <intent-filter>
+                <action android:name="com.example.httpconcorrenciafilemidea.INICIAR_SERVICO" />
+            </intent-filter>
+        </service>
+  		<service android:name=".FotoService" android:exported="false" >
+            <intent-filter>
+                <action android:name="com.example.httpconcorrenciafilemidea.INICIAR_FOTO_SERVICO" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
