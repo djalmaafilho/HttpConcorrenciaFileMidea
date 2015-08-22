@@ -824,7 +824,7 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f080023;
         public static final int action_bar_title=0x7f080022;
         public static final int action_context_bar=0x7f08001d;
-        public static final int action_fotos=0x7f080046;
+        public static final int action_fotos=0x7f080047;
         public static final int action_menu_divider=0x7f080001;
         public static final int action_menu_presenter=0x7f080002;
         public static final int action_mode_close_button=0x7f080024;
@@ -832,6 +832,7 @@ containing a value of this type.
         public static final int always=0x7f080013;
         public static final int beginning=0x7f08000f;
         public static final int buttonAsync=0x7f080042;
+        public static final int buttonBindServico=0x7f080043;
         public static final int buttonServicoFoto=0x7f08003f;
         public static final int buttonThread=0x7f080041;
         public static final int checkbox=0x7f08002d;
@@ -851,10 +852,10 @@ containing a value of this type.
         public static final int ifRoom=0x7f080015;
         public static final int image=0x7f080027;
         public static final int img=0x7f08003d;
-        public static final int linhaImg=0x7f080043;
-        public static final int linhaTxt=0x7f080044;
+        public static final int linhaImg=0x7f080044;
+        public static final int linhaTxt=0x7f080045;
         public static final int listMode=0x7f080006;
-        public static final int listViewFotos=0x7f080045;
+        public static final int listViewFotos=0x7f080046;
         public static final int list_item=0x7f080029;
         public static final int middle=0x7f080011;
         public static final int never=0x7f080016;

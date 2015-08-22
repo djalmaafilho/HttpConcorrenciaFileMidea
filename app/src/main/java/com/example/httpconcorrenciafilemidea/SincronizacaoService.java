@@ -20,6 +20,7 @@ public class SincronizacaoService extends BaseService {
 			public void run() {
 				Toast.makeText(getApplicationContext(), "Servico iniciado!!!", 
 						Toast.LENGTH_LONG).show();
+                stopSelf();
 			}
 		}, 10000l);
 		

@@ -55,4 +55,15 @@
         android:layout_alignRight="@+id/buttonServicoFoto"
         android:text="Usar AsyncTask" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bind Serviço"
+        android:id="@+id/buttonBindServico"
+        android:layout_above="@+id/buttonServicoFoto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/scrollView1"
+        android:layout_alignEnd="@+id/scrollView1" />
+
 </RelativeLayout>

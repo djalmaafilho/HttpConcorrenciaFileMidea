@@ -45,8 +45,7 @@ public class MeuReceiver extends BroadcastReceiver{
 			}else{
 				Toast.makeText(
 						context,
-						"Mesagem: " + message.getMessageBody() + " de: "
-								+ fromAddress, Toast.LENGTH_LONG).show();
+						"Mesagem: " + message.getMessageBody() + " de: "+ fromAddress, Toast.LENGTH_LONG).show();
 			}
 		}
 	}

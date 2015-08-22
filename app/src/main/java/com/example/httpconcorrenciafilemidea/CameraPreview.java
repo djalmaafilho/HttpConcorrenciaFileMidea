@@ -9,6 +9,7 @@ import android.os.Build;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.LinearLayout;
 
 public class CameraPreview extends SurfaceView implements
 		SurfaceHolder.Callback {
@@ -17,9 +18,10 @@ public class CameraPreview extends SurfaceView implements
 
 	public CameraPreview(Context context, Camera camera) {
 		super(context);
-
 		mCamera = camera;
-        mCamera.setDisplayOrientation(90);
+        if(Build.VERSION.SDK_INT > 7){
+            mCamera.setDisplayOrientation(90);
+        }
 
 		// Install a SurfaceHolder.Callback so we get notified when the
 		// underlying surface is created and destroyed.
@@ -27,7 +29,7 @@ public class CameraPreview extends SurfaceView implements
 		mHolder.addCallback(this);
 		// deprecated setting, but required on Android versions prior to 3.0
 		if(Build.VERSION.SDK_INT < 9){
-			mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+            mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 		}
 	}
 	

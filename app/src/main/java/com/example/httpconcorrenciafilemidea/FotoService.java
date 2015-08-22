@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -12,6 +13,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
+import android.media.AudioManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -40,13 +43,16 @@ public class FotoService extends Service implements PictureCallback {
 	public void onCreate() {
 		super.onCreate();
 		try {
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+                stopSelf();
+                return;
+            }
 			if (checkCameraHardware(getBaseContext())) {
 				c = getCameraInstance();
 				if (c != null) {
 					mPreview = new CameraPreview(this, c);
-
-					handler = new Handler();
-					r = new Runnable() {
+                    handler = new Handler();
+                    r = new Runnable() {
 						@Override
 						public void run() {
 							tirarFoto();
@@ -66,7 +72,6 @@ public class FotoService extends Service implements PictureCallback {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		if (c != null) {
-			//c.startPreview();
 			Log.i("DJPS", "Iniciando Preview Camera");
 			handler.postDelayed(r, 5000);
 		} else {
@@ -76,12 +81,20 @@ public class FotoService extends Service implements PictureCallback {
 	}
 	
 	void tirarFoto() {
-		if(c != null){
-            c.startPreview();
-            c.takePicture(null, null, this);
-			Log.i("DJPS", "pegando figura");
-			sendNotification("pegando figura");
-		}
+        try {
+            if(c != null){
+                AudioManager mgr = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                mgr.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+                c.startPreview();
+                c.takePicture(null, null, null, this);
+                mgr.setStreamMute(AudioManager.STREAM_SYSTEM, false);
+                Log.i("DJPS", "pegando figura");
+                sendNotification("pegando figura");
+            }
+        }catch (Exception e){
+            Toast.makeText(this, "Falha ao chamar camera", Toast.LENGTH_SHORT).show();
+            stopSelf();
+        }
 	}
 	
 	
@@ -89,7 +102,7 @@ public class FotoService extends Service implements PictureCallback {
 	public void onDestroy() {
 		try {
 			Log.i("DJPS", "SERVICO PARADO");
-			
+            Toast.makeText(this, "Serviço parado", Toast.LENGTH_SHORT).show();
 			if(c!=null){
 				handler.removeCallbacksAndMessages(null);
 				c.stopPreview();
@@ -118,6 +131,7 @@ public class FotoService extends Service implements PictureCallback {
 		Camera c = null;
 		try {
 			c = Camera.open(); // attempt to get a Camera instance
+
 		} catch (Exception e) {
 			// Camera is not available (in use or does not exist)
 		}
